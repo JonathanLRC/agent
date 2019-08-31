@@ -15,7 +15,7 @@ const getCard = respuesta => {
         {
           type: "postback",
           title: "Seleccionar",
-          payload: `Respuesta ${respuesta.id}`
+          payload: respuesta.payload
         }
       ]
     }
@@ -61,8 +61,8 @@ exports.fulfilment = functions.https.onRequest((request, response) => {
  intentMap.set('Iniciar', agent => {
     if(agent.requestSource === 'FACEBOOK'){
         let items = []
-        for(let i = 0; i < questions.length; i++){
-            items.push(getCard(questions[i]))
+        for(let i = 0; i < questions["colors"].length; i++){
+            items.push(getCard(questions["colors"][i]))
         }
         let payload = new Payload('FACEBOOK', {
             attachment: {
@@ -74,6 +74,33 @@ exports.fulfilment = functions.https.onRequest((request, response) => {
             }
         })
         agent.add(payload)
+    }
+    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+    return agent
+})
+intentMap.set('Color', agent => {
+   if(agent.requestSource === 'FACEBOOK'){
+       let items = []
+       for(let i = 0; i < questions["foods"].length; i++){
+           items.push(getCard(questions["foods"][i]))
+       }
+       let payload = new Payload('FACEBOOK', {
+           attachment: {
+               type: "template",
+               payload: {
+                   template_type: "generic",
+                   elements: items
+               }
+           }
+       })
+       agent.add(payload)
+   }
+   else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+   return agent
+})
+intentMap.set('Resultado', agent => {
+    if(agent.requestSource === 'FACEBOOK'){
+        agent.add(JSON.stringify(agent.context.get('color')))
     }
     else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
     return agent

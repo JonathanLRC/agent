@@ -1,26 +1,46 @@
-[
-    {
-        "id": 1,
-        "title": "Rojo",
-        "subtitle":"rojo",
-        "image_url":"https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg"
-    },
-    {
-        "id": 2,
-        "title": "Azul",
-        "subtitle":"azul",
-        "image_url":"https://cdn.shopify.com/s/files/1/2206/9589/products/663147B_clipped_rev_1.png?v=1541443425"
-    },
-    {
-        "id": 2,
-        "title": "Verde",
-        "subtitle":"verde",
-        "image_url":"http://significadodeloscolores.info/wp-content/uploads/2014/08/verde.png"
-    },
-    {
-        "id": 2,
-        "title": "Negro",
-        "subtitle":"negro",
-        "image_url":"https://i.kinja-img.com/gawker-media/image/upload/s--Wv3ouipp--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/811116324189419953.jpg"
-    }
-]
+{
+    "colors": [
+        {
+            "title": "Rojo",
+            "image_url":"https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg",
+            "payload": "rojo"
+        },
+        {
+            "title": "Azul",
+            "image_url":"https://cdn.shopify.com/s/files/1/2206/9589/products/663147B_clipped_rev_1.png?v=1541443425",
+            "payload": "azul"
+        },
+        {
+            "title": "Verde",
+            "image_url":"http://significadodeloscolores.info/wp-content/uploads/2014/08/verde.png",
+            "payload": "verde"
+        },
+        {
+            "title": "Negro",
+            "image_url":"https://i.kinja-img.com/gawker-media/image/upload/s--Wv3ouipp--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/811116324189419953.jpg",
+            "payload": "negro"
+        }
+    ],
+    "foods": [
+        {
+            "title": "Pizza",
+            "image_url":"https://placeralplato.com/files/2016/01/Pizza-con-pepperoni.jpg",
+            "payload": "pizza"
+        },
+        {
+            "title": "Tacos",
+            "image_url":"https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2019/04/receta-de-tacos-borrachos.jpg",
+            "payload": "tacos"
+        },
+        {
+            "title": "Buffalo Wings",
+            "image_url":"https://www.dinneratthezoo.com/wp-content/uploads/2016/08/baked-buffalo-wings-11.jpg",
+            "payload": "buffalo wings"
+        },
+        {
+            "title": "Pesto eggs",
+            "image_url":"https://images.media-allrecipes.com/userphotos/560x315/4516110.jpg",
+            "payload": "pesto eggs"
+        }
+    ]
+}
