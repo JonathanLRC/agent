@@ -42,5 +42,71 @@
             "image_url":"https://images.media-allrecipes.com/userphotos/560x315/4516110.jpg",
             "payload": "pesto eggs"
         }
+    ],
+    "animals": [
+        {
+            "title": "Gato",
+            "image_url":"https://www.purina.es/gato/purina-one/sites/g/files/mcldtz1856/files/2018-06/Mi_gato_me_muerde%281%29.jpg",
+            "payload": "gato"
+        },
+        {
+            "title": "Perro",
+            "image_url":"https://estaticos.muyinteresante.es/media/cache/760x570_thumb/uploads/images/article/5c3871215bafe83b078adbe3/perro.jpg",
+            "payload": "perro"
+        },
+        {
+            "title": "Pez",
+            "image_url":"https://www.dondevive.org/wp-content/uploads/2017/06/donde-vive-pez-payaso.jpg",
+            "payload": "pez"
+        },
+        {
+            "title": "Ave",
+            "image_url":"https://www.nationalgeographic.com.es/medio/2018/02/27/aguila__1280x720.jpg",
+            "payload": "ave"
+        }
+    ],
+    "weathers": [
+        {
+            "title": "Soleado",
+            "image_url":"http://d1lofqbqbj927c.cloudfront.net/monumental/2019/02/10162401/sol-clima.jpg",
+            "payload": "soleado"
+        },
+        {
+            "title": "Lluvioso",
+            "image_url":"https://services.meteored.com/img/article/y-ahora-cual-es-la-estacion-mas-lluviosa-180632-1.jpg",
+            "payload": "lluvioso"
+        },
+        {
+            "title": "Nublado",
+            "image_url":"https://media.lacapital.com.ar/adjuntos/203/imagenes/025/206/0025206510.jpg",
+            "payload": "nublado"
+        },
+        {
+            "title": "Granizando",
+            "image_url":"http://thumbor-prod-us-east-1.photo.aws.arc.pub/CpC9gRnPzNPr43KQgOcNa9QatLM=/arc-anglerfish-arc2-prod-dmn/public/XCZGMZ7NVZG7OTCDCRYTBS4DTI.jpg",
+            "payload": "granizando"
+        }
+    ],
+    "emotions": [
+        {
+            "title": "Feliz",
+            "image_url":"https://cdn.bioguia.com/embed/3d196185c684c57bdcb7e7ddcad127e1524428476/6_pasos_para_ser_feliz_segun_la_Universidad_de_Harvard?imagick=1&size=500",
+            "payload": "feliz"
+        },
+        {
+            "title": "Triste",
+            "image_url":"https://media1.giphy.com/media/SHP92Zpivx9Pfr1geG/source.gif",
+            "payload": "triste"
+        },
+        {
+            "title": "Furioso",
+            "image_url":"https://i.pinimg.com/originals/1a/55/94/1a55942a043629f29df82ba57103e0bc.jpg",
+            "payload": "furioso"
+        },
+        {
+            "title": "Serio",
+            "image_url":"https://stickershop.line-scdn.net/stickershop/v1/product/1196729/LINEStorePC/main.png;compress=true",
+            "payload": "serio"
+        }
     ]
 }

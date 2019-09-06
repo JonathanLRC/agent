@@ -58,7 +58,7 @@ exports.fulfilment = functions.https.onRequest((request, response) => {
      else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
      return agent
  })
- intentMap.set('Iniciar', agent => {
+ intentMap.set('Iniciar', agent => { // Pregunta colores
     if(agent.requestSource === 'FACEBOOK'){
         let items = []
         for(let i = 0; i < questions["colors"].length; i++){
@@ -73,13 +73,23 @@ exports.fulfilment = functions.https.onRequest((request, response) => {
                 }
             }
         })
+        //agent.add("Responde a las siguientes preguntas:")
+        //agent.add(["Responde a las siguientes preguntas:", "¿Cuál es tu color favorito?", payload])
+        agent.add("¿Cuál es tu color favorito?")
         agent.add(payload)
     }
     else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
     return agent
 })
-intentMap.set('Color', agent => {
+intentMap.set('Color', agent => { // Pregunta comidas
    if(agent.requestSource === 'FACEBOOK'){
+        agent.context.set({
+        'name':'color',
+        'lifespan': 5,
+        'parameters':{
+            'choosen-color':agent.parameters['Colores']
+            }
+        });
        let items = []
        for(let i = 0; i < questions["foods"].length; i++){
            items.push(getCard(questions["foods"][i]))
@@ -93,10 +103,120 @@ intentMap.set('Color', agent => {
                }
            }
        })
+       agent.add("¿Cuál es tu comida favorita?")
        agent.add(payload)
    }
    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
    return agent
+})
+intentMap.set('Food', agent => { // Pregunta animales
+   if(agent.requestSource === 'FACEBOOK'){
+        agent.context.set({
+        'name':'food',
+        'lifespan': 5,
+        'parameters':{
+            'choosen-food': agent.parameters['Comidas']
+            }
+        });
+       let items = []
+       for(let i = 0; i < questions["animals"].length; i++){
+           items.push(getCard(questions["animals"][i]))
+       }
+       let payload = new Payload('FACEBOOK', {
+           attachment: {
+               type: "template",
+               payload: {
+                   template_type: "generic",
+                   elements: items
+               }
+           }
+       })
+       agent.add("¿Cuál es tu animal favorito?")
+       agent.add(payload)
+   }
+   else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+   return agent
+})
+intentMap.set('Animal', agent => { // Pregunta climas
+   if(agent.requestSource === 'FACEBOOK'){
+        agent.context.set({
+        'name':'animal',
+        'lifespan': 5,
+        'parameters':{
+            'choosen-animal': agent.parameters['Animales']
+            }
+        });
+       let items = []
+       for(let i = 0; i < questions["weathers"].length; i++){
+           items.push(getCard(questions["weathers"][i]))
+       }
+       let payload = new Payload('FACEBOOK', {
+           attachment: {
+               type: "template",
+               payload: {
+                   template_type: "generic",
+                   elements: items
+               }
+           }
+       })
+       agent.add("¿Qué clima prefieres?")
+       agent.add(payload)
+   }
+   else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+   return agent
+})
+intentMap.set('Clima', agent => { // Pregunta emociones
+   if(agent.requestSource === 'FACEBOOK'){
+        agent.context.set({
+        'name':'weather',
+        'lifespan': 5,
+        'parameters':{
+            'choosen-weather': agent.parameters['Climas']
+            }
+        });
+       let items = []
+       for(let i = 0; i < questions["emotions"].length; i++){
+           items.push(getCard(questions["emotions"][i]))
+       }
+       let payload = new Payload('FACEBOOK', {
+           attachment: {
+               type: "template",
+               payload: {
+                   template_type: "generic",
+                   elements: items
+               }
+           }
+       })
+       agent.add("¿Cómo te sientes regularmente?")
+       agent.add(payload)
+   }
+   else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+   return agent
+})
+intentMap.set('Emocion', agent => { // Da resultado
+   if(agent.requestSource === 'FACEBOOK'){
+        agent.context.set({
+        'name':'emotion',
+        'lifespan': 5,
+        'parameters':{
+            'choosen-emotion': agent.parameters['Emociones']
+            }
+        });
+       agent.add("OK, "+agent.context.get('color')['parameters']['choosen-color']+
+       " "+agent.context.get('food')['parameters']['choosen-food']+
+       " "+agent.context.get('animal')['parameters']['choosen-animal']+
+       " "+agent.context.get('weather')['parameters']['choosen-weather']+
+       " "+agent.context.get('emotion')['parameters']['choosen-emotion']);
+   }
+   else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+   return agent
+})
+intentMap.set('Debug', agent => {
+    if(agent.requestSource === 'FACEBOOK'){
+        agent.add(JSON.stringify(agent.parameters))
+    }
+    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
+    return agent
 })
 intentMap.set('Resultado', agent => {
     if(agent.requestSource === 'FACEBOOK'){
