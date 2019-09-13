@@ -108,5 +108,23 @@
             "image_url":"https://stickershop.line-scdn.net/stickershop/v1/product/1196729/LINEStorePC/main.png;compress=true",
             "payload": "serio"
         }
+    ],
+    "personajes": [
+        {
+            "nombre": "Iron Man",
+            "imagen": "https://indiehoy.com/wp-content/uploads/2019/09/iron-man-640x360.jpg"
+        },
+        {
+            "nombre": "Capitán América",
+            "imagen": "https://img-cdn.hipertextual.com/files/2019/05/hipertextual-avengers-endgame-futuro-capitan-america-2019781893.jpg?strip=all&lossy=1&quality=57&resize=740%2C490&ssl=1"
+        },
+        {
+            "nombre": "Hulk",
+            "imagen": "https://i.kinja-img.com/gawker-media/image/upload/s--Q9wAeXxC--/c_scale,f_auto,fl_progressive,q_80,w_800/daobdnk4qaiix29vrnfn.jpg"
+        },
+        {
+            "nombre": "Black Widow",
+            "imagen": "https://wegotthiscovered.com/wp-content/uploads/2019/01/Avengers-Age-of-Ultron-Black-Widow.jpg"
+        }
     ]
 }

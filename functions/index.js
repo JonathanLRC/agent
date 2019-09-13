@@ -39,14 +39,6 @@ let template = [
 return template
 }
 
-function getPersonaje(x){
-    let ret = {
-        nombre: "Thor",
-        imagen: "https://i.kinja-img.com/gawker-media/image/upload/s--vwhuRp0h--/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/s1n7zkb1plbzle3pwhtf.jpg"
-    }
-    return ret;
-}
-
 exports.fulfilment = functions.https.onRequest((request, response) => {
  const agent = new WebhookClient({ request, response});
  let intentMap = new Map();
@@ -59,7 +51,7 @@ exports.fulfilment = functions.https.onRequest((request, response) => {
      return agent
  })
  intentMap.set('Iniciar', agent => { // Pregunta colores
-    if(agent.requestSource === 'FACEBOOK'){
+    if(agent.requestSource === 'FACEBOOK' || agent.requestSource === 'ACTIONS_ON_GOOGLE'){
         let items = []
         for(let i = 0; i < questions["colors"].length; i++){
             items.push(getCard(questions["colors"][i]))
@@ -202,11 +194,14 @@ intentMap.set('Emocion', agent => { // Da resultado
             'choosen-emotion': agent.parameters['Emociones']
             }
         });
-       agent.add("OK, "+agent.context.get('color')['parameters']['choosen-color']+
-       " "+agent.context.get('food')['parameters']['choosen-food']+
-       " "+agent.context.get('animal')['parameters']['choosen-animal']+
-       " "+agent.context.get('weather')['parameters']['choosen-weather']+
-       " "+agent.context.get('emotion')['parameters']['choosen-emotion']);
+       //agent.add("OK, "+agent.context.get('color')['parameters']['choosen-color']+
+       //" "+agent.context.get('food')['parameters']['choosen-food']+
+       //" "+agent.context.get('animal')['parameters']['choosen-animal']+
+       //" "+agent.context.get('weather')['parameters']['choosen-weather']+
+       //" "+agent.context.get('emotion')['parameters']['choosen-emotion']);
+       let resultado = getResultado(getPersonaje(agent.context))
+       let payload = new Payload('FACEBOOK', resultado)
+       agent.add(payload)
    }
    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
    return agent
@@ -218,16 +213,9 @@ intentMap.set('Debug', agent => {
     else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
     return agent
 })
-intentMap.set('Resultado', agent => {
-    if(agent.requestSource === 'FACEBOOK'){
-        agent.add(JSON.stringify(agent.context.get('color')))
-    }
-    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
-    return agent
-})
 intentMap.set('Personaje', agent => {
    if(agent.requestSource === 'FACEBOOK'){
-        let resultado = getResultado(getPersonaje(0))
+        let resultado = getResultado(questions['personajes'][0])
         let payload = new Payload('FACEBOOK', resultado)
         agent.add(payload)
    }
@@ -236,3 +224,88 @@ intentMap.set('Personaje', agent => {
 })
  agent.handleRequest(intentMap)
 });
+
+function getPersonaje(x){
+    var ironman=0, capamerica=0, hulk=0, blackwidow=0;
+    switch(x.get('color')['parameters']['choosen-color']){
+        case 'rojo':
+            ironman++;
+            break;
+        case 'azul':
+            capamerica++;
+            break;
+        case 'verde':
+            hulk++;
+            break;
+        case 'negro':
+            blackwidow++;
+            break;
+    }
+    switch(x.get('food')['parameters']['choosen-food']){
+        case 'pizza':
+            ironman++;
+            break;
+        case 'tacos':
+            hulk++;
+            break;
+        case 'buffalo wings':
+            blackwidow++;
+            break;
+        case 'pesto eggs':
+            capamerica++;
+            break;
+    }
+    switch(x.get('animal')['parameters']['choosen-animal']){
+        case 'gato':
+            ironman++;
+            break;
+        case 'perro':
+            capamerica++;
+            break;
+        case 'pez':
+            hulk++;
+            break;
+        case 'ave':
+            blackwidow++;
+            break;
+    }
+    switch(x.get('weather')['parameters']['choosen-weather']){
+        case 'soleado':
+            capamerica++;
+            break;
+        case 'lluvioso':
+            ironman++;
+            break;
+        case 'nublado':
+            blackwidow++;
+            break;
+        case 'granizando':
+            hulk++;
+            break;
+    }
+    switch(x.get('emotion')['parameters']['choosen-emotion']){
+        case 'feliz':
+            ironman++;
+            break;
+        case 'triste':
+            capamerica++;
+            break;
+        case 'furioso':
+            hulk++;
+            break;
+        case 'serio':
+            blackwidow++;
+            break;
+    }
+    var ret;
+    if(ironman >= capamerica && ironman >= hulk && ironman >= blackwidow){
+        ret = questions['personajes'][0];
+    }else if(capamerica >= ironman && capamerica >= hulk && capamerica >= blackwidow){
+        ret = questions['personajes'][1];
+    }else if(hulk >= ironman && hulk >= capamerica && hulk >= blackwidow){
+        ret = questions['personajes'][2];
+    }else if(blackwidow >= ironman && blackwidow >= capamerica && blackwidow >= hulk){
+        ret = questions['personajes'][3];
+    }
+    return ret;
+}
