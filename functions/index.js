@@ -51,23 +51,28 @@ exports.fulfilment = functions.https.onRequest((request, response) => {
      return agent
  })
  intentMap.set('Iniciar', agent => { // Pregunta colores
-    if(agent.requestSource === 'FACEBOOK' || agent.requestSource === 'ACTIONS_ON_GOOGLE'){
+    if(agent.requestSource === 'FACEBOOK'){
         let items = []
         for(let i = 0; i < questions["colors"].length; i++){
             items.push(getCard(questions["colors"][i]))
         }
-        let payload = new Payload('FACEBOOK', {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "generic",
-                    elements: items
-                }
+        let payload = new Payload('FACEBOOK', [
+            {
+                text: "Responde a las siguientes preguntas para saber cuál vengador eres:"
+            },
+            {
+                text: "¿Cuál es tu color favorito?"
+            },
+            {
+                attachment: {
+                    type: "template",
+                    payload: {
+                        template_type: "generic",
+                        elements: items
+                    }
+                } 
             }
-        })
-        //agent.add("Responde a las siguientes preguntas:")
-        //agent.add(["Responde a las siguientes preguntas:", "¿Cuál es tu color favorito?", payload])
-        agent.add("¿Cuál es tu color favorito?")
+        ])
         agent.add(payload)
     }
     else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
@@ -86,16 +91,20 @@ intentMap.set('Color', agent => { // Pregunta comidas
        for(let i = 0; i < questions["foods"].length; i++){
            items.push(getCard(questions["foods"][i]))
        }
-       let payload = new Payload('FACEBOOK', {
-           attachment: {
-               type: "template",
-               payload: {
-                   template_type: "generic",
-                   elements: items
-               }
+       let payload = new Payload('FACEBOOK', [
+           {
+               text: "¿Cuál es tu comida favorita?"
+           },
+           {
+               attachment: {
+                   type: "template",
+                   payload: {
+                       template_type: "generic",
+                       elements: items
+                   }
+               } 
            }
-       })
-       agent.add("¿Cuál es tu comida favorita?")
+       ])
        agent.add(payload)
    }
    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
@@ -114,16 +123,20 @@ intentMap.set('Food', agent => { // Pregunta animales
        for(let i = 0; i < questions["animals"].length; i++){
            items.push(getCard(questions["animals"][i]))
        }
-       let payload = new Payload('FACEBOOK', {
-           attachment: {
-               type: "template",
-               payload: {
-                   template_type: "generic",
-                   elements: items
-               }
+       let payload = new Payload('FACEBOOK', [
+           {
+               text: "¿Cuál es tu animal favorito?"
+           },
+           {
+               attachment: {
+                   type: "template",
+                   payload: {
+                       template_type: "generic",
+                       elements: items
+                   }
+               } 
            }
-       })
-       agent.add("¿Cuál es tu animal favorito?")
+       ])
        agent.add(payload)
    }
    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
@@ -142,16 +155,20 @@ intentMap.set('Animal', agent => { // Pregunta climas
        for(let i = 0; i < questions["weathers"].length; i++){
            items.push(getCard(questions["weathers"][i]))
        }
-       let payload = new Payload('FACEBOOK', {
-           attachment: {
-               type: "template",
-               payload: {
-                   template_type: "generic",
-                   elements: items
-               }
+       let payload = new Payload('FACEBOOK', [
+           {
+               text: "¿Qué clima prefieres?"
+           },
+           {
+               attachment: {
+                   type: "template",
+                   payload: {
+                       template_type: "generic",
+                       elements: items
+                   }
+               } 
            }
-       })
-       agent.add("¿Qué clima prefieres?")
+       ])
        agent.add(payload)
    }
    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
@@ -170,16 +187,20 @@ intentMap.set('Clima', agent => { // Pregunta emociones
        for(let i = 0; i < questions["emotions"].length; i++){
            items.push(getCard(questions["emotions"][i]))
        }
-       let payload = new Payload('FACEBOOK', {
-           attachment: {
-               type: "template",
-               payload: {
-                   template_type: "generic",
-                   elements: items
-               }
+       let payload = new Payload('FACEBOOK', [
+           {
+               text: "¿Cómo te sientes regularmente?"
+           },
+           {
+               attachment: {
+                   type: "template",
+                   payload: {
+                       template_type: "generic",
+                       elements: items
+                   }
+               } 
            }
-       })
-       agent.add("¿Cómo te sientes regularmente?")
+       ])
        agent.add(payload)
    }
    else agent.add("<speak>Escucha esto: <audio src='https://www.w3schools.com/html/horse.ogg'></audio></speak>")
