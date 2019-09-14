@@ -112,19 +112,23 @@
     "personajes": [
         {
             "nombre": "Iron Man",
-            "imagen": "https://indiehoy.com/wp-content/uploads/2019/09/iron-man-640x360.jpg"
+            "imagen": "https://indiehoy.com/wp-content/uploads/2019/09/iron-man-640x360.jpg",
+            "descripcion": "Eres inteligente, creativo y posees un buen sentido del humor. Pero también eres excéntrico, caprichoso y algo arrogante."
         },
         {
             "nombre": "Capitán América",
-            "imagen": "https://img-cdn.hipertextual.com/files/2019/05/hipertextual-avengers-endgame-futuro-capitan-america-2019781893.jpg?strip=all&lossy=1&quality=57&resize=740%2C490&ssl=1"
+            "imagen": "https://img-cdn.hipertextual.com/files/2019/05/hipertextual-avengers-endgame-futuro-capitan-america-2019781893.jpg?strip=all&lossy=1&quality=57&resize=740%2C490&ssl=1",
+            "descripcion": "Sabes cómo organizar y crear la esperanza cuando esta está a punto de perderse. Posees un espíritu noble y honesto. Eres intolerante frente a las injusticias y los abusos de poder."
         },
         {
             "nombre": "Hulk",
-            "imagen": "https://i.kinja-img.com/gawker-media/image/upload/s--Q9wAeXxC--/c_scale,f_auto,fl_progressive,q_80,w_800/daobdnk4qaiix29vrnfn.jpg"
+            "imagen": "https://i.kinja-img.com/gawker-media/image/upload/s--Q9wAeXxC--/c_scale,f_auto,fl_progressive,q_80,w_800/daobdnk4qaiix29vrnfn.jpg",
+            "descripcion": "Tienes un caracter fuerte y decidido. Casi no piensas las cosas y actúas impulsivamente. Te enojas fácilmente."
         },
         {
             "nombre": "Black Widow",
-            "imagen": "https://wegotthiscovered.com/wp-content/uploads/2019/01/Avengers-Age-of-Ultron-Black-Widow.jpg"
+            "imagen": "https://wegotthiscovered.com/wp-content/uploads/2019/01/Avengers-Age-of-Ultron-Black-Widow.jpg",
+            "descripcion": "Tienes un caracter serio y analítico y no le temes a ningún trabajo o asignación que se te haga. Eres bastante sarcástico y motivado. Tienes un alto valor moral hacia tus amigos, tanto que podrías dar tu vida por ellos."
         }
     ]
 }

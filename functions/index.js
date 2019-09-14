@@ -34,6 +34,9 @@ let template = [
     },
     {
         text: "Eres:\n" + resultado.nombre
+    },
+    {
+        text: resultado.descripcion
     }
 ]
 return template
